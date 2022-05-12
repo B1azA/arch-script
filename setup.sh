@@ -26,7 +26,7 @@ sudo pacman -S arc-gtk-theme --noconfirm
 sudo pacman -S arc-icon-theme --noconfirm
 sudo pacman -S rofi --noconfirm
 sudo pacman -S picom --noconfirm
-sudo pacman -S i3-lock --noconfirm
+sudo pacman -S i3lock --noconfirm
 sudo pacman -S xrandr --noconfirm
 
 # download and load scripts
