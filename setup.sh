@@ -21,10 +21,11 @@ sudo pacman -S neofetch --noconfirm
 sudo pacman -S lxappearance --noconfirm
 sudo pacman -S material-gtk-theme --noconfirm
 sudo pacman -S papirus-icon-theme --noconfirm
-sudo pacman -S arc-icon-theme
+sudo pacman -S arc-icon-theme --noconfirm
 sudo pacman -S rofi --noconfirm
 sudo pacman -S picom --noconfirm
 sudo pacman -S i3-lock --noconfirm
+sudo pacman -S xrandr --noconfirm
 
 # download and load scripts
 cd ~
@@ -35,4 +36,4 @@ sudo rm -R ~/.config/gtk-3.0
 sudo rm -R ~/.config/rofi
 sudo rm -R ~/.config/picom
 sudo rm -R ~/.config/terminator
-sudo cp -R $BASEDIR/* ~/.config 
+sudo cp -R $BASEDIR/arch-script/* ~/.config 
