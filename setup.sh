@@ -21,6 +21,7 @@ sudo pacman -S neofetch --noconfirm
 sudo pacman -S lxappearance --noconfirm
 sudo pacman -S material-gtk-theme --noconfirm
 sudo pacman -S papirus-icon-theme --noconfirm
+sudo pacman -S arc-gtk-theme --noconfirm
 sudo pacman -S arc-icon-theme --noconfirm
 sudo pacman -S rofi --noconfirm
 sudo pacman -S picom --noconfirm
