@@ -214,16 +214,16 @@ exec_always xrandr --output DVI-D-0 --rotate left
 exec_always setxkbmap cz
 
 # Wallpaper
-exec_always feh --bg-fill /home/b1aza/Wallpapers/arch02.png
+exec_always feh --bg-fill ~/.config/Wallpapers/arch02.png
 
 # Keybinding i3lock
-bindsym $mod+x exec /home/b1aza/.config/scripts/lock.sh
+bindsym $mod+x exec ~/.config/scripts/lock.sh
 
 # Assign programs to workspaces
 # for_window [class="Alacritty"] move to workspace $ws1
 
 # Window compositor
-exec_always picom --config $HOME/.config/picom/picom.conf
+exec_always picom --config ~/.config/picom/picom.conf
 
 # i3-gaps settings
 for_window [class=".*"] border pixel 0
@@ -231,7 +231,7 @@ gaps inner 10
 gaps outer 10
 
 # Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Autostart
 #exec alacritty
