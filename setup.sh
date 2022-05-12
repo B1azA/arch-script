@@ -16,6 +16,7 @@ sudo yay -Syu --noconfirm
 
 # install dependencies
 sudo pacman -S polybar --noconfirm
+sudo pacman -S feh --noconfirm
 sudo pacman -S terminator --noconfirm
 sudo pacman -S neofetch --noconfirm
 sudo pacman -S lxappearance --noconfirm
