@@ -28,6 +28,7 @@ sudo pacman -S rofi --noconfirm
 sudo pacman -S picom --noconfirm
 sudo pacman -S i3lock --noconfirm
 sudo pacman -S xrandr --noconfirm
+sudo pacman -S playerctl --noconfirm
 
 # download and load scripts
 cd ~
