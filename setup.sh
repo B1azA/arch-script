@@ -39,4 +39,4 @@ sudo rm -R ~/.config/gtk-3.0
 sudo rm -R ~/.config/rofi
 sudo rm -R ~/.config/picom
 sudo rm -R ~/.config/terminator
-sudo cp -R $BASEDIR/arch-script/* ~/.config 
+sudo cp -R $BASEDIR/arch-script/* ~/.config

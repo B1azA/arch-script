@@ -48,7 +48,6 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec rofi -show run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -58,8 +57,8 @@ bindsym $mod+d exec rofi -show run
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+i focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -70,8 +69,8 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -158,15 +157,27 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym i resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # better precision
+        bindsym Control+Left resize shrink width 1 px or 1 ppt
+        bindsym Control+Down resize grow height 1 px or 1 ppt
+        bindsym Control+Up resize shrink height 1 px or 1 ppt
+        bindsym Control+Right resize grow width 1 px or 1 ppt
+        
+        # better precision
+        bindsym Control+j resize shrink width 1 px or 1 ppt
+        bindsym Control+i resize grow height 1 px or 1 ppt
+        bindsym Control+k resize shrink height 1 px or 1 ppt
+        bindsym Control+l resize grow width 1 px or 1 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -183,11 +194,11 @@ set $textcolor	#ffffff
 set $ubgcolor	#ff0000
 set $itextcolor #969696
 
-#			border		background	text		indicator
-client.focused		$bgcolor	$bgcolor	$textcolor	$bgcolor
-client.unfocused	$ibgcolor	$ibgcolor	$itextcolor	$ibgcolor
+#			            border		background	text		indicator
+client.focused		    $bgcolor	$bgcolor	$textcolor	$bgcolor
+client.unfocused	    $ibgcolor	$ibgcolor	$itextcolor	$ibgcolor
 client.focused_inactive	$ibgcolor	$ibgcolor	$itextcolor	$ibgcolor
-client.urgent 		$ubgcolor	$ubgcolor	$textcolor	$ubgcolor
+client.urgent 		    $ubgcolor	$ubgcolor	$textcolor	$ubgcolor
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -222,9 +233,31 @@ bindsym $mod+x exec ~/.config/scripts/lock.sh
 exec_always picom --config ~/.config/picom/picom.conf
 
 # i3-gaps settings
-for_window [class=".*"] border pixel 0
-gaps inner 10
-gaps outer 10
+set $innergaps 8
+set $outergaps 5
+for_window [class=".*"] border pixel 1
+gaps inner $innergaps
+gaps outer $outergaps
+
+# mode for setting size of gaps
+mode "gaps" {
+    # resize
+    bindsym i gaps inner current plus 1
+    bindsym Shift+i gaps inner current minus 1
+    bindsym o gaps outer current plus 1
+    bindsym Shift+o gaps outer current minus 1
+    
+    # defaults
+    bindsym Control+i gaps inner all set $innergaps
+    bindsym Control+o gaps outer all set $outergaps
+    
+    # exit
+    bindsym $mod+g mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+bindsym $mod+g mode "gaps"
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -238,6 +271,10 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 bindsym $mod+b exec chromium
 bindsym $mod+Shift+f exec thunar
 bindsym $mod+m exec youtube-music
+bindsym $mod+c exec code
+bindsym $mod+d exec rofi -modi "drun" -show drun
+bindsym $mod+q exec rofi -modi "run" -show run
+bindsym $mod+Shift+m exec ~/.config/scripts/rofi/monitor_layout.sh
 
 # Audio
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
